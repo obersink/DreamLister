@@ -18,6 +18,7 @@ class MainVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        generateTestData()
         attemptFetch()
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -111,4 +112,23 @@ extension MainVC: NSFetchedResultsControllerDelegate {
                 break
         }
     }
+    
+    func generateTestData() {
+        let item = Item(context: context)
+        item.title = "MacBook Pro"
+        item.price = 1800
+        item.details = "need money"
+        
+        let item2 = Item(context: context)
+        item2.title = "Banana"
+        item2.price = 2000
+        item2.details = "real deal"
+        
+        let item3 = Item(context: context)
+        item3.title = "book"
+        item3.price = 5000
+        item3.details = "with very loooooooooooooong text and a lot of words and costs a lot"
+    }
 }
+
+

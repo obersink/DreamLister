@@ -103,7 +103,6 @@
                                                 <constraint firstAttribute="bottom" secondItem="24u-8g-1In" secondAttribute="bottom" constant="8" id="wVU-gx-wga"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="detailsLabel" destination="6oZ-zF-hbX" id="L7B-pE-Coe"/>
                                             <outlet property="itemTitleLabel" destination="zEY-ah-6v9" id="gs1-tl-DsV"/>
