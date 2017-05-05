@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8CED4AFB1EBBE60E0045B98D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CED4AFA1EBBE60E0045B98D /* AppDelegate.swift */; };
-		8CED4AFD1EBBE60E0045B98D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CED4AFC1EBBE60E0045B98D /* ViewController.swift */; };
+		8CED4AFD1EBBE60E0045B98D /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CED4AFC1EBBE60E0045B98D /* MainVC.swift */; };
 		8CED4B001EBBE60E0045B98D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CED4AFE1EBBE60E0045B98D /* Main.storyboard */; };
 		8CED4B031EBBE60E0045B98D /* DreamLister.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8CED4B011EBBE60E0045B98D /* DreamLister.xcdatamodeld */; };
 		8CED4B051EBBE60E0045B98D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CED4B041EBBE60E0045B98D /* Assets.xcassets */; };
@@ -23,12 +23,13 @@
 		8CED4B201EBBE9BA0045B98D /* Store+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CED4B181EBBE9BA0045B98D /* Store+CoreDataProperties.swift */; };
 		8CED4B241EBC4C900045B98D /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CED4B231EBC4C900045B98D /* CustomTextField.swift */; };
 		8CED4B261EBC4D9F0045B98D /* MaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CED4B251EBC4D9F0045B98D /* MaterialView.swift */; };
+		8CED4B281EBCF9C10045B98D /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CED4B271EBCF9C10045B98D /* ItemCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8CED4AF71EBBE60E0045B98D /* DreamLister.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DreamLister.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CED4AFA1EBBE60E0045B98D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8CED4AFC1EBBE60E0045B98D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8CED4AFC1EBBE60E0045B98D /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		8CED4AFF1EBBE60E0045B98D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8CED4B021EBBE60E0045B98D /* DreamLister.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DreamLister.xcdatamodel; sourceTree = "<group>"; };
 		8CED4B041EBBE60E0045B98D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -44,6 +45,7 @@
 		8CED4B181EBBE9BA0045B98D /* Store+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Store+CoreDataProperties.swift"; path = "DreamLister/Store+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8CED4B231EBC4C900045B98D /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		8CED4B251EBC4D9F0045B98D /* MaterialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialView.swift; sourceTree = "<group>"; };
+		8CED4B271EBCF9C10045B98D /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,7 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				8CED4AFA1EBBE60E0045B98D /* AppDelegate.swift */,
-				8CED4AFC1EBBE60E0045B98D /* ViewController.swift */,
+				8CED4AFC1EBBE60E0045B98D /* MainVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -102,6 +104,7 @@
 			children = (
 				8CED4AFE1EBBE60E0045B98D /* Main.storyboard */,
 				8CED4B251EBC4D9F0045B98D /* MaterialView.swift */,
+				8CED4B271EBCF9C10045B98D /* ItemCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -203,10 +206,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8CED4AFD1EBBE60E0045B98D /* ViewController.swift in Sources */,
+				8CED4AFD1EBBE60E0045B98D /* MainVC.swift in Sources */,
 				8CED4AFB1EBBE60E0045B98D /* AppDelegate.swift in Sources */,
 				8CED4B1E1EBBE9BA0045B98D /* ItemType+CoreDataProperties.swift in Sources */,
 				8CED4B261EBC4D9F0045B98D /* MaterialView.swift in Sources */,
+				8CED4B281EBCF9C10045B98D /* ItemCell.swift in Sources */,
 				8CED4B191EBBE9BA0045B98D /* Item+CoreDataClass.swift in Sources */,
 				8CED4B201EBBE9BA0045B98D /* Store+CoreDataProperties.swift in Sources */,
 				8CED4B1B1EBBE9BA0045B98D /* Image+CoreDataClass.swift in Sources */,
