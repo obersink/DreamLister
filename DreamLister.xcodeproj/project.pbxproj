@@ -24,6 +24,7 @@
 		8CED4B241EBC4C900045B98D /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CED4B231EBC4C900045B98D /* CustomTextField.swift */; };
 		8CED4B261EBC4D9F0045B98D /* MaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CED4B251EBC4D9F0045B98D /* MaterialView.swift */; };
 		8CED4B281EBCF9C10045B98D /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CED4B271EBCF9C10045B98D /* ItemCell.swift */; };
+		8CED4B2A1EBD69710045B98D /* ItemDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CED4B291EBD69710045B98D /* ItemDetailsVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		8CED4B231EBC4C900045B98D /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		8CED4B251EBC4D9F0045B98D /* MaterialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialView.swift; sourceTree = "<group>"; };
 		8CED4B271EBCF9C10045B98D /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
+		8CED4B291EBD69710045B98D /* ItemDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetailsVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 			children = (
 				8CED4AFA1EBBE60E0045B98D /* AppDelegate.swift */,
 				8CED4AFC1EBBE60E0045B98D /* MainVC.swift */,
+				8CED4B291EBD69710045B98D /* ItemDetailsVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 				8CED4B201EBBE9BA0045B98D /* Store+CoreDataProperties.swift in Sources */,
 				8CED4B1B1EBBE9BA0045B98D /* Image+CoreDataClass.swift in Sources */,
 				8CED4B1D1EBBE9BA0045B98D /* ItemType+CoreDataClass.swift in Sources */,
+				8CED4B2A1EBD69710045B98D /* ItemDetailsVC.swift in Sources */,
 				8CED4B031EBBE60E0045B98D /* DreamLister.xcdatamodeld in Sources */,
 				8CED4B241EBC4C900045B98D /* CustomTextField.swift in Sources */,
 				8CED4B1F1EBBE9BA0045B98D /* Store+CoreDataClass.swift in Sources */,

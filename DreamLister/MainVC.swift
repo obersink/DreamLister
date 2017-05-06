@@ -18,11 +18,9 @@ class MainVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        generateTestData()
+        //generateTestData()
         attemptFetch()
-        // Do any additional setup after loading the view, typically from a nib.
     }
-
 }
 
 extension MainVC: UITableViewDelegate, UITableViewDataSource {
@@ -128,7 +126,7 @@ extension MainVC: NSFetchedResultsControllerDelegate {
         item3.title = "book"
         item3.price = 5000
         item3.details = "with very loooooooooooooong text and a lot of words and costs a lot"
+        
+        ad.saveContext()
     }
 }
-
-
