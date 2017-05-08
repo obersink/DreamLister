@@ -208,6 +208,10 @@
                             </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hXT-iQ-IGW">
                                 <rect key="frame" x="16" y="393" width="343" height="216"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="jPd-HW-mpd" id="GT9-VH-6TL"/>
+                                    <outlet property="delegate" destination="jPd-HW-mpd" id="9V2-sX-HLH"/>
+                                </connections>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="59b-5I-7cm">
                                 <rect key="frame" x="16" y="617" width="343" height="30"/>
@@ -219,6 +223,9 @@
                                 <state key="normal" title="Save Item">
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="savePressed:" destination="jPd-HW-mpd" eventType="touchUpInside" id="0t0-eJ-GGw"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -249,6 +256,12 @@
                             <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="detailsField" destination="sdI-So-fPn" id="t36-pU-4mh"/>
+                        <outlet property="priceField" destination="0q3-3Y-jax" id="cjJ-AC-Rbh"/>
+                        <outlet property="storePicker" destination="hXT-iQ-IGW" id="H1X-D1-Jdi"/>
+                        <outlet property="titleField" destination="6ET-Fo-Wed" id="D4o-Uj-IdU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IBH-vL-DIO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
