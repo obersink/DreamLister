@@ -18,6 +18,9 @@ class ItemDetailsVC: UIViewController {
     
     var stores = [Store]()
     var itemToEdit: Item?
+    var imagePicker: UIImagePickerController!
+    
+    @IBOutlet weak var thumbImg: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,26 +29,9 @@ class ItemDetailsVC: UIViewController {
             topItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
         }
         
-        
-//        let store = Store(context: context)
-//        store.name = "Best Buy"
-//        
-//        let store2 = Store(context: context)
-//        store2.name = "Tesla Dealership"
-//        
-//        let store3 = Store(context: context)
-//        store3.name = "Frys Electronics"
-//        
-//        let store4 = Store(context: context)
-//        store4.name = "Target"
-//        
-//        let store5 = Store(context: context)
-//        store5.name = "Amazon"
-//        
-//        let store6 = Store(context: context)
-//        store6.name = "K mart"
-//        
-//        ad.saveContext()
+        imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+
         getStores()
         
         if itemToEdit != nil {
@@ -55,7 +41,8 @@ class ItemDetailsVC: UIViewController {
     }
     
     @IBAction func savePressed(_ sender: Any) {
-        var item: Item
+        var item: Item!
+        
         if itemToEdit != nil {
             item = itemToEdit!
         }
@@ -75,16 +62,34 @@ class ItemDetailsVC: UIViewController {
             item.details = details
         }
         
+        let picture = Image(context: context)
+        picture.image = thumbImg.image
+        item.toImage = picture
+        
         item.toStore = stores[storePicker.selectedRow(inComponent: 0)]
         ad.saveContext()
         navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func deletePressed(_ sender: Any) {
+        if itemToEdit != nil {
+            context.delete(itemToEdit!)
+            ad.saveContext()
+        }
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func addImage(_ sender: UIButton) {
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    //sets the detail view = to item selected
     func loadItemData() {
         if let item = itemToEdit {
             titleField.text = item.title
             priceField.text = "\(item.price)"
             detailsField.text = item.details
+            thumbImg.image = item.toImage?.image as? UIImage
             
             if let store = item.toStore {
                 var index = 0
@@ -111,6 +116,17 @@ class ItemDetailsVC: UIViewController {
     }
 }
 
+//Image Picker
+extension ItemDetailsVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let img = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            thumbImg.image = img
+            imagePicker.dismiss(animated: true, completion: nil)
+        }
+    }
+}
+
+//Store Picker
 extension ItemDetailsVC: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return stores.count
@@ -125,3 +141,23 @@ extension ItemDetailsVC: UIPickerViewDelegate, UIPickerViewDataSource {
         return 1
     }
 }
+
+//        let store = Store(context: context)
+//        store.name = "Best Buy"
+//
+//        let store2 = Store(context: context)
+//        store2.name = "Tesla Dealership"
+//
+//        let store3 = Store(context: context)
+//        store3.name = "Frys Electronics"
+//
+//        let store4 = Store(context: context)
+//        store4.name = "Target"
+//
+//        let store5 = Store(context: context)
+//        store5.name = "Amazon"
+//
+//        let store6 = Store(context: context)
+//        store6.name = "K mart"
+//
+//        ad.saveContext()

@@ -166,6 +166,17 @@
                                     <constraint firstAttribute="height" constant="75" id="YYj-Os-WPz"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="12Y-B9-Hek">
+                                <rect key="frame" x="16" y="72" width="94" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="94" id="tMh-Kd-7Ug"/>
+                                    <constraint firstAttribute="height" constant="75" id="vpY-wh-2M3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <connections>
+                                    <action selector="addImage:" destination="jPd-HW-mpd" eventType="touchUpInside" id="eFw-Sr-rBI"/>
+                                </connections>
+                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6ET-Fo-Wed" customClass="CustomTextField" customModule="DreamLister" customModuleProvider="target">
                                 <rect key="frame" x="120" y="72" width="239" height="30"/>
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -237,6 +248,7 @@
                             <constraint firstItem="59b-5I-7cm" firstAttribute="top" secondItem="hXT-iQ-IGW" secondAttribute="bottom" constant="8" id="7bY-vP-krF"/>
                             <constraint firstItem="hXT-iQ-IGW" firstAttribute="leading" secondItem="bHe-zP-wHL" secondAttribute="leadingMargin" id="82p-wb-fxa"/>
                             <constraint firstItem="6ET-Fo-Wed" firstAttribute="leading" secondItem="2eg-d2-WBp" secondAttribute="trailing" constant="10" id="B2n-n8-ewZ"/>
+                            <constraint firstItem="12Y-B9-Hek" firstAttribute="leading" secondItem="bHe-zP-wHL" secondAttribute="leadingMargin" id="GEs-0e-k8T"/>
                             <constraint firstItem="59b-5I-7cm" firstAttribute="leading" secondItem="bHe-zP-wHL" secondAttribute="leadingMargin" id="Ihu-Jd-QCm"/>
                             <constraint firstAttribute="trailingMargin" secondItem="0q3-3Y-jax" secondAttribute="trailing" id="KCa-hC-aPF"/>
                             <constraint firstItem="f8T-kC-Oz1" firstAttribute="centerX" secondItem="bHe-zP-wHL" secondAttribute="centerX" id="RBF-bT-ZQ7"/>
@@ -245,6 +257,8 @@
                             <constraint firstItem="sdI-So-fPn" firstAttribute="top" secondItem="0q3-3Y-jax" secondAttribute="bottom" constant="10" id="eD0-8p-GuU"/>
                             <constraint firstAttribute="trailingMargin" secondItem="sdI-So-fPn" secondAttribute="trailing" id="fbg-9C-o1z"/>
                             <constraint firstItem="0q3-3Y-jax" firstAttribute="leading" secondItem="2eg-d2-WBp" secondAttribute="trailing" constant="10" id="hnQ-78-4TQ"/>
+                            <constraint firstItem="12Y-B9-Hek" firstAttribute="top" secondItem="W4p-ln-3cf" secondAttribute="bottom" constant="8" id="jnb-7f-U9b"/>
+                            <constraint firstItem="0q3-3Y-jax" firstAttribute="leading" secondItem="12Y-B9-Hek" secondAttribute="trailing" constant="10" id="mh2-lW-wfV"/>
                             <constraint firstItem="2cB-j1-e3k" firstAttribute="top" secondItem="59b-5I-7cm" secondAttribute="bottom" constant="20" id="mmy-xm-wYJ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="6ET-Fo-Wed" secondAttribute="trailing" id="pKT-Nt-b5C"/>
                             <constraint firstAttribute="trailingMargin" secondItem="59b-5I-7cm" secondAttribute="trailing" id="r2b-tJ-KrV"/>
@@ -254,12 +268,16 @@
                     <navigationItem key="navigationItem" title="Add/Edit" id="anY-G6-3ed">
                         <barButtonItem key="rightBarButtonItem" systemItem="trash" id="g99-11-Gul">
                             <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="deletePressed:" destination="jPd-HW-mpd" id="cYK-we-Iwx"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="detailsField" destination="sdI-So-fPn" id="t36-pU-4mh"/>
                         <outlet property="priceField" destination="0q3-3Y-jax" id="cjJ-AC-Rbh"/>
                         <outlet property="storePicker" destination="hXT-iQ-IGW" id="H1X-D1-Jdi"/>
+                        <outlet property="thumbImg" destination="2eg-d2-WBp" id="H0c-xU-mdS"/>
                         <outlet property="titleField" destination="6ET-Fo-Wed" id="D4o-Uj-IdU"/>
                     </connections>
                 </viewController>
@@ -272,7 +290,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tsS-2N-qaQ" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="kHQ-OS-RgC">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kHQ-OS-RgC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
