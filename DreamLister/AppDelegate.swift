@@ -94,9 +94,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    //create stores in coredata if no stores exist
     func checkStores() {
         do {
             let storeCount = try context.count(for:Store.fetchRequest())
+            
             if storeCount == 0 {
                 let store = Store(context: context)
                 store.name = "Best Buy"

@@ -25,17 +25,18 @@ class MainVC: UIViewController {
     @IBAction func segmentChange(_ sender: Any) {
         attemptFetch()
         itemTableView.reloadData()
-        print(segment.selectedSegmentIndex)
     }
 }
 
 extension MainVC: UITableViewDelegate, UITableViewDataSource {
     
+    //populate cell with item data from coredata
     func configureCell(cell: ItemCell, indexPath: IndexPath) {
         let item = fetchedResultsController.object(at: indexPath)
         cell.configureCell(item: item)
     }
     
+    //send item data to itemToEdit when cell is pressed
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ItemDetailsVC" {
             if let destination = segue.destination as? ItemDetailsVC {
@@ -46,6 +47,7 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    //call configure cell with each item in table
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemCell
         configureCell(cell: cell, indexPath: indexPath)
@@ -71,6 +73,7 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
         return tableView.rowHeight
     }
     
+    //segue
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let objs = fetchedResultsController.fetchedObjects, objs.count > 0 {
             let item = objs[indexPath.row]
@@ -83,9 +86,13 @@ extension MainVC: NSFetchedResultsControllerDelegate {
     
     func attemptFetch() {
         let fetchRequest: NSFetchRequest<Item> = Item.fetchRequest()
+        
+        //sort descriptors
         let dateSort = NSSortDescriptor(key: "created", ascending: false)
         let priceSort = NSSortDescriptor(key: "price", ascending: true)
         let titleSort = NSSortDescriptor(key: "title", ascending: true)
+        let typeSort = NSSortDescriptor(key: "toItemType.type", ascending: true)
+
         
         switch segment.selectedSegmentIndex {
         case 0:
@@ -97,14 +104,13 @@ extension MainVC: NSFetchedResultsControllerDelegate {
         case 2:
             fetchRequest.sortDescriptors = [titleSort]
             break;
+        case 3:
+            fetchRequest.sortDescriptors = [typeSort]
         default:
             break;
         }
-//        if segment.selectedSegmentIndex == 0 {
-//            fetchRequest.sortDescriptors = [dateSort]
-//        }
         
-        //fetchRequest.sortDescriptors = [dateSort]
+        
         
         let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         controller.delegate = self
@@ -127,6 +133,7 @@ extension MainVC: NSFetchedResultsControllerDelegate {
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        
         switch(type) {
             case .insert:
                 if let indexPath = newIndexPath {

@@ -15,8 +15,11 @@ class ItemDetailsVC: UIViewController {
     @IBOutlet weak var titleField: CustomTextField!
     @IBOutlet weak var priceField: CustomTextField!
     @IBOutlet weak var detailsField: CustomTextField!
+    @IBOutlet weak var typePicker: UIPickerView!
     
     var stores = [Store]()
+    var categories = [String]()
+    
     var itemToEdit: Item?
     var imagePicker: UIImagePickerController!
     
@@ -32,11 +35,14 @@ class ItemDetailsVC: UIViewController {
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self
 
+        //pickers need to be set before loadItemData is called
         getStores()
-        
+        categories = ["Electronics", "Vehicles", "Consumables", "Apparel"]
+
         if itemToEdit != nil {
             loadItemData()
         }
+        
         
     }
     
@@ -64,9 +70,16 @@ class ItemDetailsVC: UIViewController {
         
         let picture = Image(context: context)
         picture.image = thumbImg.image
-        item.toImage = picture
         
+        
+        let itemType = ItemType(context: context)
+        itemType.type = categories[typePicker.selectedRow(inComponent: 0)]
+        
+        
+        item.toImage = picture
         item.toStore = stores[storePicker.selectedRow(inComponent: 0)]
+        item.toItemType = itemType
+        
         ad.saveContext()
         navigationController?.popViewController(animated: true)
     }
@@ -91,10 +104,12 @@ class ItemDetailsVC: UIViewController {
             detailsField.text = item.details
             thumbImg.image = item.toImage?.image as? UIImage
             
+            //store = store item was from
             if let store = item.toStore {
                 var index = 0
                 repeat {
                     let s = stores[index]
+                    //set picker to index of 'store'
                     if s.name == store.name {
                         storePicker.selectRow(index, inComponent: 0, animated: false)
                         break
@@ -102,9 +117,24 @@ class ItemDetailsVC: UIViewController {
                     index += 1
                 } while (index < stores.count)
             }
+            
+            //category
+            if let type = item.toItemType {
+                var index = 0
+                repeat {
+                    let s = categories[index]
+                    if s == type.type {
+                        typePicker.selectRow(index, inComponent: 0, animated: false)
+                        break
+                    }
+                    index += 1
+                } while (index < categories.count)
+            }
+
         }
     }
     
+    //set stores from coredata to stores array
     func getStores() {
         let fetchRequest: NSFetchRequest<Store> = Store.fetchRequest()
         do {
@@ -126,15 +156,27 @@ extension ItemDetailsVC: UIImagePickerControllerDelegate, UINavigationController
     }
 }
 
-//Store Picker
+//Picker(s)
 extension ItemDetailsVC: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return stores.count
+        if pickerView.tag == 1 {
+            return stores.count
+        }
+        else {
+            return categories.count
+        }
     }
     
+    //populate picker(s)
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        let store = stores[row]
-        return store.name
+        if pickerView.tag == 1 {
+            let store = stores[row]
+            return store.name
+        }
+        else {
+            let type = categories[row]
+            return type
+        }
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
